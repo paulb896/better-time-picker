@@ -1,0 +1,29 @@
+<div class="better-time-picker" id="better-time-picker">
+  <div class="time-header">
+    <span
+      class="selected-hour"
+      ng-class="{highlighted: betterTimePicker.PageState.hourPickerEnabled}"
+      ng-click="betterTimePicker.setHourPicker()"
+      ng-bind="betterTimePicker.UserSelection.selectedDate | date:'hh'">
+    </span> :
+    <span
+      ng-class="{highlighted: !betterTimePicker.PageState.hourPickerEnabled}"
+      ng-click="betterTimePicker.setMinutePicker()"
+      class="selected-minute"
+      ng-bind="betterTimePicker.UserSelection.selectedDate | date:'mm'">
+    </span>
+    <span
+      ng-click="betterTimePicker.toggleAmPm()"
+      class="selected-am-pm-toggle"
+      ng-bind="betterTimePicker.UserSelection.selectedDate | date:'a'">
+    </span>
+  </div>
+  <div class="hours-circle">
+    <div
+      ng-click="betterTimePicker.setSelectedTime(hour.value)"
+      ng-repeat="hour in betterTimePicker.PageState.times"
+      class="hour"
+      style="left:{{hour.x}}px; top:{{hour.y}}px;">{{hour.value}}
+    </div>
+  </div>
+</div>
