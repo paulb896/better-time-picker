@@ -2,6 +2,7 @@ better-time-picker
 ==================
 
 Angular Time Picker
+
     <html>
     ...
     <link href="better-time-picker.css" rel="stylesheet" type="text/css" media="all">
@@ -16,5 +17,5 @@ Angular Time Picker
     <script src="betterTimePicker.js"></script>
 
     ...
-    
+
     angular.module('someApp', ['betterTimePicker']);
