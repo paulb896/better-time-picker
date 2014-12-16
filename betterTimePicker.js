@@ -3,18 +3,24 @@
 
   module.directive('betterTimePicker', function() {
     return {
-      restrict: 'E',
+      restrict: 'AE',
       replace: true,
       templateUrl: 'better-time-picker.html',
-      scope: {
+      scope:{
+        date: "="
       },
       bindToController: true,
       controllerAs: 'betterTimePicker',
       controller: function($scope) {
         var betterTimePicker = this;
-        betterTimePicker.initializeTime = function() {
+        betterTimePicker.initializeTime = function(date) {
           betterTimePicker.PageState = {};
-          var currentDate = new Date();
+          var currentDate = date;
+          if (!currentDate) {
+            currentDate = new Date();
+          } else if (typeof date == "string") {
+            currentDate = new Date(date);
+          }
           betterTimePicker.UserSelection = {
             selectedDate: currentDate
           };
@@ -23,6 +29,10 @@
           betterTimePicker.setSelectedMinute(currentDate.getMinutes());
           betterTimePicker.setHourPicker();
         };
+
+        betterTimePicker.bindDate = function() {
+          betterTimePicker.date = betterTimePicker.UserSelection.selectedDate;
+        }
 
         betterTimePicker.clearTimeCircle = function() {
           betterTimePicker.PageState.times = [];
@@ -65,23 +75,21 @@
           } else {
             betterTimePicker.setSelectedMinute(time);
           }
-          betterTimePicker.clearTimeCircle();
         };
 
         betterTimePicker.setSelectedHour = function(hour) {
           betterTimePicker.UserSelection.selectedDate.setHours(hour);
         };
 
-        /**
-         * Set hour/minute depending on time picker state.
-         * @param int minute
-         */
         betterTimePicker.setSelectedMinute = function(minute) {
           betterTimePicker.UserSelection.selectedDate.setMinutes(minute);
         };
       },
       link: function(scope, element, attrs, betterTimePicker) {
         betterTimePicker.initializeTime();
+        if (attrs.date) {
+          betterTimePicker.bindDate();
+        }
       }
     }
   })
