@@ -7,7 +7,8 @@
       replace: true,
       templateUrl: 'better-time-picker.html',
       scope:{
-        date: "="
+        date: "=",
+        hideAfterSelection: "="
       },
       bindToController: true,
       controllerAs: 'betterTimePicker',
@@ -15,6 +16,7 @@
         var betterTimePicker = this;
         betterTimePicker.initializeTime = function(date) {
           betterTimePicker.PageState = {};
+          betterTimePicker.PageState.times = [];
           var currentDate = date;
           if (!currentDate) {
             currentDate = new Date();
@@ -70,6 +72,7 @@
         };
 
         betterTimePicker.setSelectedTime = function(time) {
+          betterTimePicker.hideAfterSelection && betterTimePicker.clearTimeCircle();
           if (betterTimePicker.PageState.hourPickerEnabled) {
             betterTimePicker.setSelectedHour(time);
           } else {

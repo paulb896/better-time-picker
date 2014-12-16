@@ -13,8 +13,9 @@
     <a style="text-decoration:none" href="https://github.com/paulb896/better-time-picker">Source on GitHub</a>
   </header>
   <div ng-controller="exampleTimePicker" ng-init="initDate()">
-    <div style="margin-left:205px" ng-bind="dateModel.date | date:'shortTime'"></div>
-    <better-time-picker date="dateModel.date"></better-time-picker>
+    <div ng-bind="dateModel.date | date:'shortTime'"></div>
+    <input type="checkbox" ng-model="hideAfterSelection"/> HIDE ON SELECTION
+    <better-time-picker hide-after-selection="hideAfterSelection" date="dateModel.date"></better-time-picker>
   </div>
   <pre style="width:50%; display:inline;"><code>
     > bower install
