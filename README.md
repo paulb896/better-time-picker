@@ -3,6 +3,17 @@ better-time-picker
 
 Angular Time Picker
 
-TODO:
- - inject time into directive through attrribute
- - add interval to rootscope in app module config in example app, that decrements time
+    > bower install
+
+
+    <html>
+    ...
+    <link href="better-time-picker.css" rel="stylesheet" type="text/css" media="all">
+
+    ...
+    <better-time-picker date="dateModel.date"></better-time-picker>
+    ...
+    <script src="angular.js"></script>
+    <script src="betterTimePicker.js"></script>
+    ...
+    angular.module('someApp', ['betterTimePicker']);
