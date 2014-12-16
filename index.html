@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-CA" ng-app="exampleApp">
+<head>
+  <meta charset="utf-8" />
+  <title>Better Angular Time Picker</title>
+  <meta name="description" content="Angular Better Time Picker" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link href="better-time-picker.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body style="padding-left:200px; padding-top: 10px;">
+  <header style="margin-bottom:30px; margin-right:100px; float:right">
+    <h1 style="font-weight:100">Better Time Picker</h1>
+    <a style="text-decoration:none" href="https://github.com/paulb896/better-time-picker">Source on GitHub</a>
+  </header>
+  <div ng-controller="exampleTimePicker" ng-init="initDate()">
+    <div style="margin-left:205px" ng-bind="dateModel.date | date:'shortTime'"></div>
+    <better-time-picker date="dateModel.date"></better-time-picker>
+  </div>
+  <pre style="width:50%; display:inline;"><code>
+    > bower install
+
+    &lt;link href="better-time-picker.css" rel="stylesheet" type="text/css" media="all" /&gt;
+
+    &lt;script src="angular.js"&gt;&lt;/script&gt;
+    &lt;script src="betterTimePicker.js"&gt;&lt;/script&gt;
+    angular.module('someApp', ['betterTimePicker']);
+
+    &lt;better-time-picker date="dateModel.date"&gt;&lt;better-time-picker&gt;
+  </code></pre>
+  <script src="angular.js"></script>
+  <script src="betterTimePicker.js"></script>
+  <script>
+    (function() {
+      var module = this;
+      module.controller('exampleTimePicker', function($scope, $interval) {
+        $scope.initDate = function() {
+          $scope.dateModel = {
+            date: new Date()
+          };
+        };
+      });
+    }).call(angular.module('exampleApp', ['betterTimePicker']));
+  </script>
+  <script type="text/ng-template" id="better-time-picker.html">
+    <div class="better-time-picker">
+      <div class="time-header">
+        <span
+          class="selected-hour"
+          ng-class="{highlighted: betterTimePicker.PageState.hourPickerEnabled}"
+          ng-click="betterTimePicker.setHourPicker()"
+          ng-bind="betterTimePicker.UserSelection.selectedDate | date:'hh'">
+        </span> :
+        <span
+          ng-class="{highlighted: !betterTimePicker.PageState.hourPickerEnabled}"
+          ng-click="betterTimePicker.setMinutePicker()"
+          class="selected-minute"
+          ng-bind="betterTimePicker.UserSelection.selectedDate | date:'mm'">
+        </span>
+        <span
+          ng-click="betterTimePicker.toggleAmPm()"
+          class="selected-am-pm-toggle"
+          ng-bind="betterTimePicker.UserSelection.selectedDate | date:'a'">
+        </span>
+      </div>
+      <div class="hours-circle">
+        <div
+          ng-click="betterTimePicker.setSelectedTime(hour.value)"
+          ng-repeat="hour in betterTimePicker.PageState.times"
+          class="hour"
+          style="left:{{hour.x}}px; top:{{hour.y}}px;">{{hour.value}}
+        </div>
+      </div>
+    </div>
+  </script>
+</body>
+</html>

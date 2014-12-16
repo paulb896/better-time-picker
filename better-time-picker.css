@@ -1,0 +1,83 @@
+.better-time-picker{
+    width: 300px;
+    height: 400px;
+    color:rgba(98, 98, 98, 1);
+    text-shadow: 1px 1px 3px rgba(215, 215, 233, 1);
+    display: inline-table;
+    z-index: 100;
+    padding: 0;
+    opacity: 0.8;
+}
+
+.better-time-picker:hover{
+    opacity: 1;
+}
+
+.highlighted{
+    color: rgba(86,1,1,0.89);
+}
+
+.hour{
+    cursor: pointer;
+    position: absolute;
+    color: darkgrey;
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    text-align: center;
+    margin: 10px;
+    font-family: Monaco,"Times New Roman";
+    font-style: italic;
+}
+
+.hours-circle{
+    width:248px;
+    height:248px;
+    position:relative;
+    left:22px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.hour:hover{
+    color: rgba(111,1,1,0.9);
+}
+
+.selected-hour{
+    font-size: 86px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-left:9%;
+}
+
+.selected-minute{
+    font-size: 86px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.selected-am-pm-toggle{
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.time-header{
+    height: 100px;
+    width: 100%;
+    font-size: 27px;
+    font-style: italic;
+    font-family: monospace times, "Times New Roman";
+}
+
+.time-header > span{
+    font-weight: 300;
+}
+
+.time-header > span:hover{
+    color: rgba(111,1,1,0.9);
+}
