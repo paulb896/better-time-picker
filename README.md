@@ -1,7 +1,12 @@
 better-time-picker
 ==================
 
-Angular Time Picker
+Install with bower
+
+    > bower install better-time-picker
+
+
+Html view
 
     <html>
     ...
