@@ -3,14 +3,20 @@
     <span
       class="selected-hour"
       ng-class="{highlighted: betterTimePicker.PageState.hourPickerEnabled}"
-      ng-click="betterTimePicker.setHourPicker()"
+      ng-click="betterTimePicker.selectHourPicker()"
       ng-bind="betterTimePicker.UserSelection.selectedDate | date:'hh'">
     </span> :
     <span
-      ng-class="{highlighted: !betterTimePicker.PageState.hourPickerEnabled}"
-      ng-click="betterTimePicker.setMinutePicker()"
+      ng-class="{highlighted: betterTimePicker.PageState.minutePickerEnabled}"
+      ng-click="betterTimePicker.selectMinutePicker()"
       class="selected-minute"
       ng-bind="betterTimePicker.UserSelection.selectedDate | date:'mm'">
+    </span>
+    <span
+      ng-class="{highlighted: betterTimePicker.PageState.secondPickerEnabled}"
+      ng-click="betterTimePicker.selectSecondPicker()"
+      class="selectable-second"
+      ng-bind="betterTimePicker.UserSelection.selectedDate | date:'ss'">
     </span>
     <span
       ng-click="betterTimePicker.toggleAmPm()"
@@ -18,12 +24,13 @@
       ng-bind="betterTimePicker.UserSelection.selectedDate | date:'a'">
     </span>
   </div>
-  <div class="hours-circle">
+  <div class="time-unit-circle">
     <div
       ng-click="betterTimePicker.setSelectedTime(hour.value)"
-      ng-repeat="hour in betterTimePicker.PageState.times"
+      ng-repeat="timeUnit in betterTimePicker.PageState.times"
+      ng-class="{'hour': hourPickerEnabled, 'minute': minutePickerEnabled, 'second': secondPickerEnabled}"
       class="hour"
-      style="left:{{hour.x}}px; top:{{hour.y}}px;">{{hour.value}}
+      style="left:{{timeUnit.x}}px; top:{{timeUnit.y}}px;">{{timeUnit.value}}
     </div>
   </div>
 </div>

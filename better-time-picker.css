@@ -17,7 +17,7 @@
     color: rgba(86,1,1,0.89);
 }
 
-.hour{
+.time-unit{
     cursor: pointer;
     position: absolute;
     color: darkgrey;
@@ -31,11 +31,20 @@
     font-style: italic;
 }
 
-.hours-circle{
+.minute {
+  color:red;
+}
+
+.second {
+  font-size:40px;
+}
+
+.time-unit-circle{
     width:248px;
     height:248px;
     position:relative;
-    left:22px;
+    left:50px;
+    top:50px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -58,7 +67,12 @@
 .selected-minute{
     font-size: 86px;
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 100;
+}
+
+.selected-second{
+    cursor: pointer;
+    font-weight: 100;
 }
 
 .selected-am-pm-toggle{

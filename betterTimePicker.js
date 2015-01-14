@@ -29,7 +29,8 @@
 
           betterTimePicker.setSelectedHour(currentDate.getHours());
           betterTimePicker.setSelectedMinute(currentDate.getMinutes());
-          betterTimePicker.setHourPicker();
+          betterTimePicker.setSelectedMinute(currentDate.getSeconds());
+          betterTimePicker.selectHourPicker();
         };
 
         betterTimePicker.bindDate = function() {
@@ -38,26 +39,29 @@
 
         betterTimePicker.clearTimeCircle = function() {
           betterTimePicker.PageState.times = [];
+          betterTimePicker.PageState.hourPickerEnabled = false;
+          betterTimePicker.PageState.minutePickerEnabled = false;
+          betterTimePicker.PageState.secondPickerEnabled = false;
         };
 
-        betterTimePicker.setHourPicker = function() {
-          betterTimePicker.PageState.hourPickerEnabled = true;
+        betterTimePicker.selectHourPicker = function() {
           betterTimePicker.clearTimeCircle();
+          betterTimePicker.PageState.hourPickerEnabled = true;
           var items = 12;
           for(var i = 1; i <= items; i++) {
-              var x = 100 - 12 + 104 * Math.cos(2 * Math.PI * i / items - (Math.PI/2) );
-              var y = 100 - 12 + 104 * Math.sin(2 * Math.PI * i / items - (Math.PI/2) );
+              var x = 60 + 104 * Math.cos(2 * Math.PI * i / items - (Math.PI/2) );
+              var y = 60 + 104 * Math.sin(2 * Math.PI * i / items - (Math.PI/2) );
               betterTimePicker.PageState.times.push({x: x, y:y, value: i});
           }
         };
 
-        betterTimePicker.setMinutePicker = function() {
-          betterTimePicker.PageState.hourPickerEnabled = false;
+        betterTimePicker.selectMinutePicker = function() {
           betterTimePicker.clearTimeCircle();
+          betterTimePicker.PageState.minutePickerEnabled = true;
           var items = 12;
           for(var i = 0; i < items; i++) {
-            var x = 100 - 12 + 104 * Math.cos(2 * Math.PI * i / items - (Math.PI/2)),
-            y = 100 - 12 + 104 * Math.sin(2 * Math.PI * i / items - (Math.PI/2)),
+            var x = 60 + 104 * Math.cos(2 * Math.PI * i / items - (Math.PI/2)),
+            y = 60 - 12 + 104 * Math.sin(2 * Math.PI * i / items - (Math.PI/2)),
             value = i *5;
             betterTimePicker.PageState.times.push({x: x, y:y, value: value});
           }
@@ -71,21 +75,27 @@
           betterTimePicker.UserSelection.selectedDate.setHours(hour);
         };
 
-        betterTimePicker.setSelectedTime = function(time) {
-          betterTimePicker.hideAfterSelection && betterTimePicker.clearTimeCircle();
-          if (betterTimePicker.PageState.hourPickerEnabled) {
-            betterTimePicker.setSelectedHour(time);
-          } else {
-            betterTimePicker.setSelectedMinute(time);
-          }
-        };
-
         betterTimePicker.setSelectedHour = function(hour) {
           betterTimePicker.UserSelection.selectedDate.setHours(hour);
         };
 
         betterTimePicker.setSelectedMinute = function(minute) {
           betterTimePicker.UserSelection.selectedDate.setMinutes(minute);
+        };
+
+        betterTimePicker.setSelectedSecond = function(second) {
+          betterTimePicker.UserSelection.selectedDate.setSeconds(second);
+        };
+
+        betterTimePicker.setSelectedTime = function(time) {
+          betterTimePicker.hideAfterSelection && betterTimePicker.clearTimeCircle();
+          if (betterTimePicker.PageState.hourPickerEnabled) {
+            betterTimePicker.setSelectedHour(time);
+          } else if (betterTimePicker.PageState.minutePickerEnabled) {
+            betterTimePicker.setSelectedMinute(time);
+          } else if (betterTimePicker.PageState.secondPickerEnabled) {
+            betterTimePicker.setSelectedSecond(time);
+          }
         };
       },
       link: function(scope, element, attrs, betterTimePicker) {

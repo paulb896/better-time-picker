@@ -14,8 +14,8 @@
   </header>
   <div ng-controller="exampleTimePicker" ng-init="initDate()">
     <div ng-bind="dateModel.date | date:'shortTime'"></div>
-    <input type="checkbox" ng-model="hideAfterSelection"/> HIDE ON SELECTION
     <better-time-picker hide-after-selection="hideAfterSelection" date="dateModel.date"></better-time-picker>
+    <input type="checkbox" ng-model="hideAfterSelection"/> HIDE ON SELECTION
   </div>
   <pre style="width:50%; display:inline;"><code>
     > bower install
@@ -28,7 +28,7 @@
 
     &lt;better-time-picker date="dateModel.date"&gt;&lt;better-time-picker&gt;
   </code></pre>
-  <script src="angular.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
   <script src="betterTimePicker.js"></script>
   <script>
     (function() {
@@ -48,12 +48,12 @@
         <span
           class="selected-hour"
           ng-class="{highlighted: betterTimePicker.PageState.hourPickerEnabled}"
-          ng-click="betterTimePicker.setHourPicker()"
+          ng-click="betterTimePicker.selectHourPicker()"
           ng-bind="betterTimePicker.UserSelection.selectedDate | date:'hh'">
         </span> :
         <span
-          ng-class="{highlighted: !betterTimePicker.PageState.hourPickerEnabled}"
-          ng-click="betterTimePicker.setMinutePicker()"
+          ng-class="{highlighted: betterTimePicker.PageState.minutePickerEnabled}"
+          ng-click="betterTimePicker.selectMinutePicker()"
           class="selected-minute"
           ng-bind="betterTimePicker.UserSelection.selectedDate | date:'mm'">
         </span>
@@ -63,12 +63,13 @@
           ng-bind="betterTimePicker.UserSelection.selectedDate | date:'a'">
         </span>
       </div>
-      <div class="hours-circle">
+      <div class="time-unit-circle">
         <div
-          ng-click="betterTimePicker.setSelectedTime(hour.value)"
-          ng-repeat="hour in betterTimePicker.PageState.times"
-          class="hour"
-          style="left:{{hour.x}}px; top:{{hour.y}}px;">{{hour.value}}
+          ng-class="{'hour': PageState.hourPickerEnabled, 'minute': PageState.minutePickerEnabled, 'second': PageState.secondPickerEnabled}"
+          ng-click="betterTimePicker.setSelectedTime(timeUnit.value)"
+          ng-repeat="timeUnit in betterTimePicker.PageState.times"
+          class="time-unit"
+          style="left:{{timeUnit.x}}px; top:{{timeUnit.y}}px;">{{timeUnit.value}}
         </div>
       </div>
     </div>

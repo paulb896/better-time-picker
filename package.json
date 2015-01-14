@@ -1,0 +1,32 @@
+{
+  "name": "better-time-picker",
+  "description": "Hour and minute picker directive",
+  "version": "0.1.0",
+  "author": "Paul Beauchamp",
+  "contributors": [
+    "Paul Beauchamp"
+  ],
+  "license": "MIT",
+  "repository": "paulb896/better-time-picker",
+  "homepage": "http://paulb896.github.io/better-time-picker/",
+  "keywords": [
+    "angular",
+    "time",
+    "date",
+    "picker",
+    "directive"
+  ],
+  "dependencies": {
+    "bower": "*"
+  },
+  "devDependencies": {
+
+  },
+  "files": [
+    "README.md",
+    "betterTimePicker",
+    "betterTimePicker.js",
+    "betterTimePicker.css",
+    "index.html"
+  ]
+}
