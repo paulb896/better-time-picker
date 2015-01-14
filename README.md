@@ -18,7 +18,7 @@ Html view
 
     ...
 
-    <script src="angular.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
     <script src="betterTimePicker.js"></script>
 
     ...
