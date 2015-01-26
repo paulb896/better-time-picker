@@ -1,5 +1,5 @@
-describe('angularjs homepage', function() {
-  browser.get('http://paulb896.github.io/better-time-picker/');
+describe('better-time-picker', function() {
+  browser.get('better-time-picker');
   var currentDateTime = new Date();
 
   it('should have a title', function() {
