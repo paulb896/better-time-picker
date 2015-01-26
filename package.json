@@ -28,5 +28,8 @@
     "betterTimePicker.js",
     "betterTimePicker.css",
     "index.html"
-  ]
+  ],
+  "scripts": {
+    "test": "nodejs node_modules/protractor/bin/protractor protractor-config.js"
+  }
 }

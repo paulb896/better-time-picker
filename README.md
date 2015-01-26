@@ -24,3 +24,7 @@ Html view
     ...
 
     angular.module('someApp', ['betterTimePicker']);
+
+Run Protractor Tests
+
+    > npm test
