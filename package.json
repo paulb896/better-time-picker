@@ -20,7 +20,7 @@
     "bower": "*"
   },
   "devDependencies": {
-
+    "protractor": "*"
   },
   "files": [
     "README.md",
