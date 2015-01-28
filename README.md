@@ -1,6 +1,10 @@
 better-time-picker
 ==================
 
+
+Demo page can be found [HERE](http://paulb896.github.io/better-time-picker/ "Title")
+
+
 Install with bower
 
     > bower install better-time-picker
