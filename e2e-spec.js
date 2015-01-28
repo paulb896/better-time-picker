@@ -10,8 +10,9 @@ describe('better-time-picker', function() {
   it('should display current hour', function() {
     var expectedHour = currentDateTime.getHours();
     if (expectedHour > 12) {
-      expectedHour= '0' + (expectedHour - 12);
+      expectedHour -= 12;
     }
+    expectedHour = '0' + expectedHour;
 
     var hour = element(by.binding("betterTimePicker.UserSelection.selectedDate | date:'hh'")).getText();
     expect(hour).toEqual(expectedHour);
@@ -24,7 +25,7 @@ describe('better-time-picker', function() {
     expect(element.all(by.repeater("timeUnit in betterTimePicker.PageState.times")).last().getText()).toEqual('12');
   });
 
-  it('should show minute options when chosing minute picker', function() {
+  it('should show minute options when selecting minute picker', function() {
     element(by.binding("betterTimePicker.UserSelection.selectedDate | date:'mm'")).click();
 
     expect(element.all(by.repeater("timeUnit in betterTimePicker.PageState.times")).first().getText()).toEqual('0');
